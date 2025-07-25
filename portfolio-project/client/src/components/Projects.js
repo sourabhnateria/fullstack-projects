@@ -7,7 +7,7 @@ const Projects = () => {
     const [loading, setLoading] = useState(true);
     const [filter, setFilter] = useState('all');
 
-    useEffect(() => useEffect(() => {
+    useEffect(() => {
     axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/portfolio`)
       .then((res) => console.log(res.data))
       .catch((err) => console.error(err));
