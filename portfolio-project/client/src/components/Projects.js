@@ -1,11 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import axios from 'axios';
+import Modal from 'react-modal';
 import './Projects.css';
+
+Modal.setAppElement('#root');
 
 const Projects = () => {
     const [projects, setProjects] = useState([]);
     const [loading, setLoading] = useState(true);
     const [filter, setFilter] = useState('all');
+    const [selectedProject, setSelectedProject] = useState(null);
 
     useEffect(() => {
         fetchProjects();
@@ -13,12 +18,12 @@ const Projects = () => {
 
     const fetchProjects = async () => {
         try {
-            const response = await fetch('/api/projects');
-            const data = await response.json();
-            setProjects(data);
-            setLoading(false);
+            const apiUrl = `${process.env.REACT_APP_API_URL}/api/projects`;
+            const response = await axios.get(apiUrl);
+            setProjects(response.data);
         } catch (error) {
             console.error('Error fetching projects:', error);
+        } finally {
             setLoading(false);
         }
     };
@@ -31,9 +36,7 @@ const Projects = () => {
         hidden: { opacity: 0 },
         visible: {
             opacity: 1,
-            transition: {
-                staggerChildren: 0.1
-            }
+            transition: { staggerChildren: 0.1 }
         }
     };
 
@@ -63,7 +66,7 @@ const Projects = () => {
                 </motion.div>
 
                 <div className="project-filters">
-                    {['all', 'web', 'mobile', 'api'].map(category => (
+                    {['all', 'web', 'mobile', 'desktop', 'api'].map(category => (
                         <button
                             key={category}
                             className={`filter-btn ${filter === category ? 'active' : ''}`}
@@ -88,44 +91,22 @@ const Projects = () => {
                             variants={itemVariants}
                             whileHover={{ y: -5 }}
                             transition={{ duration: 0.3 }}
+                            onClick={() => setSelectedProject(project)}
                         >
                             <div className="project-image">
                                 <img src={project.imageUrl} alt={project.title} />
                                 <div className="project-overlay">
-                                    <div className="project-links">
-                                        {project.liveLink && (
-                                            <a 
-                                                href={project.liveLink} 
-                                                target="_blank" 
-                                                rel="noopener noreferrer"
-                                                className="project-link"
-                                            >
-                                                Live Demo
-                                            </a>
-                                        )}
-                                        {project.githubLink && (
-                                            <a 
-                                                href={project.githubLink} 
-                                                target="_blank" 
-                                                rel="noopener noreferrer"
-                                                className="project-link"
-                                            >
-                                                GitHub
-                                            </a>
-                                        )}
+                                    <div className="overlay-content">
+                                        <span>View Details</span>
                                     </div>
                                 </div>
                             </div>
-                            
                             <div className="project-content">
                                 <h3>{project.title}</h3>
                                 <p>{project.description}</p>
-                                
                                 <div className="project-tech">
-                                    {project.technologies.map((tech) => (
-                                        <span key={tech} className="tech-tag">
-                                            {tech}
-                                        </span>
+                                    {project.technologies.slice(0, 3).map((tech) => (
+                                        <span key={tech} className="tech-tag">{tech}</span>
                                     ))}
                                 </div>
                             </div>
@@ -133,6 +114,26 @@ const Projects = () => {
                     ))}
                 </motion.div>
             </div>
+
+            {selectedProject && (
+                <Modal
+                    isOpen={!!selectedProject}
+                    onRequestClose={() => setSelectedProject(null)}
+                    className="project-modal"
+                    overlayClassName="project-modal-overlay"
+                >
+                    <button className="close-btn" onClick={() => setSelectedProject(null)}>✕</button>
+                    <div className="modal-content">
+                        <h2>{selectedProject.title}</h2>
+                        <img className="modal-hero" src={selectedProject.imageUrl} alt={selectedProject.title} />
+                        <p>{selectedProject.longDescription || selectedProject.description}</p>
+                        <div className="modal-actions">
+                            {selectedProject.liveLink && <a href={selectedProject.liveLink} target="_blank" rel="noopener noreferrer" className="btn btn-primary">Live Demo</a>}
+                            {selectedProject.githubLink && <a href={selectedProject.githubLink} target="_blank" rel="noopener noreferrer" className="btn btn-outline">Source Code</a>}
+                        </div>
+                    </div>
+                </Modal>
+            )}
         </section>
     );
 };
