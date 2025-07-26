@@ -8,22 +8,21 @@ const Projects = () => {
     const [filter, setFilter] = useState('all');
 
     useEffect(() => {
-    axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/portfolio`)
-      .then((res) => console.log(res.data))
-      .catch((err) => console.error(err));
-  }, []);
+        fetchProjects();
+    }, []);
 
     const fetchProjects = async () => {
-        try {
-            const response = await fetch('/api/projects');
-            const data = await response.json();
-            setProjects(data);
-            setLoading(false);
-        } catch (error) {
-            console.error('Error fetching projects:', error);
-            setLoading(false);
-        }
-    };
+    try {
+        // Use the environment variable to construct the full API URL
+        const apiUrl = `${process.env.REACT_APP_API_URL}/api/projects`;
+        const response = await axios.get(apiUrl);
+        setProjects(response.data);
+        setLoading(false);
+    } catch (error) {
+        console.error('Error fetching projects:', error);
+        setLoading(false);
+    }
+};
 
     const filteredProjects = filter === 'all' 
         ? projects 
