@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import axios from 'axios';
-import Modal from 'react-modal';
 import './Projects.css';
 
 const Projects = () => {
