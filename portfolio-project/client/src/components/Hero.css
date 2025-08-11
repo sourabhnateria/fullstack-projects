@@ -76,11 +76,46 @@
     cursor: pointer;
     transition: all 0.3s ease;
     text-decoration: none;
-    display: inline-block;
+    display: inline-flex;;
+}
+
+.btn.secondary {
+  background-color: transparent;
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn.secondary:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+.download-spinner {
+  animation: spin 1s linear infinite;
+}
+
+.download-icon {
+  font-size: 18px;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
 .btn-primary {
-    background: transparent;
+    background: #6081a4;
     color: rgb(214, 198, 198);
     border: 2px solid rgba(214, 198, 198, 0.5); /* Add border */
 }
@@ -131,6 +166,11 @@
     .hero-buttons {
         justify-content: center;
     }
+    .btn {
+    width: 100%;
+    max-width: 300px;
+    justify-content: center;
+  }
 }
 
 @media (max-width: 480px) {

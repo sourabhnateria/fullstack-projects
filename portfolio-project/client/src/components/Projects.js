@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import axios from 'axios';
-<<<<<<< HEAD
 import Modal from 'react-modal';
-=======
->>>>>>> 041ff76a5df923e93d076d99fd9a3789bd20d1d9
 import './Projects.css';
 
 Modal.setAppElement('#root');
@@ -20,7 +17,6 @@ const Projects = () => {
     }, []);
 
     const fetchProjects = async () => {
-<<<<<<< HEAD
         try {
             const apiUrl = `${process.env.REACT_APP_API_URL}/api/projects`;
             const response = await axios.get(apiUrl);
@@ -31,19 +27,6 @@ const Projects = () => {
             setLoading(false);
         }
     };
-=======
-    try {
-        // Use the environment variable to construct the full API URL
-        const apiUrl = `${process.env.REACT_APP_API_URL}/api/projects`;
-        const response = await axios.get(apiUrl);
-        setProjects(response.data);
-        setLoading(false);
-    } catch (error) {
-        console.error('Error fetching projects:', error);
-        setLoading(false);
-    }
-};
->>>>>>> 041ff76a5df923e93d076d99fd9a3789bd20d1d9
 
     const filteredProjects = filter === 'all' 
         ? projects 

@@ -63,7 +63,7 @@ const Product = () => {
 
   // Filter and sort products
   const filteredProducts = products.filter(product =>
-    product.title.toLowerCase().includes(searchTerm.toLowerCase()) &&
+    product.title?.toLowerCase().includes(searchTerm.toLowerCase()) &&
     (filterCategory === 'all' || product.category === filterCategory)
   );
 
@@ -99,7 +99,7 @@ const Product = () => {
               className="filter-select"
             >
               <option value="all">All Categories</option>
-              <option value="T-shirt">T-shirts</option>
+              <option value="t-shirts">T-shirts</option>
               <option value="jeans">Jeans</option>
               {/* <option value="books">Books</option> */}
             </select>

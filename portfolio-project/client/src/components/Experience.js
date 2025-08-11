@@ -45,7 +45,7 @@ const Experience = () => {
                     "created a restaurant app backend only",
                     "make a portfolio website "
                 ],
-                technologies: ["Node.js","RestApi", "Mongodb", "mongoose", "React", "Postman", "git","github"]
+                technologies: ["Node.js","Express.js","RestApi", "Mongodb", "mongoose", "React", "Postman", "git","github"]
             }
         ];
         

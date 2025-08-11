@@ -29,6 +29,18 @@ const profileSchema = new mongoose.Schema({
     resume: {
         type: String
     },
+     cvPath: {
+        type: String,
+        default: null
+    },
+    cvFilename: {
+        type: String,
+        default: 'CV.pdf'
+    },
+    cvUpdatedAt: {
+        type: Date,
+        default: Date.now
+    },
     socialLinks: {
         linkedin: String,
         github: String,

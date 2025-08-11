@@ -1,9 +1,96 @@
-.products{
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    justify-items: center;
-    margin: 20px 0;
+.products-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
-@import url("../utils/ProductLists/productlist.css");
+.products-header {
+  margin-bottom: 3rem;
+}
+
+.products-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.products-controls {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.search-wrapper,
+.filter-wrapper,
+.sort-wrapper {
+  position: relative;
+}
+
+.search-input,
+.filter-select,
+.sort-select {
+  padding: 0.75rem 1rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  font-size: 1rem;
+  background: white;
+  transition: all 0.3s ease;
+  min-width: 200px;
+}
+
+.search-input:focus,
+.filter-select:focus,
+.sort-select:focus {
+  outline: none;
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  justify-items: center;
+}
+
+.no-products {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: #6b7280;
+  font-size: 1.125rem;
+}
+.footer{
+  margin-top: 2%;
+  padding: 10px;
+  text-align: center;
+  font-weight: 500;
+  color: black;
+}
+.Admin{
+  color: #bcd407;
+}
+
+@media (max-width: 768px) {
+  .products-controls {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .search-input,
+  .filter-select,
+  .sort-select {
+    min-width: 100%;
+    max-width: 300px;
+  }
+  
+  .products-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+  
+}

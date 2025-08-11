@@ -1,17 +1,30 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import './Hero.css';
+import axios from 'axios';
 
 const Hero = () => {
-    const [profile, setProfile] = useState(null);
+  const [profile, setProfile] = useState(null);
+  const [isDownloading, setIsDownloading] = useState(false);
 
-    useEffect(() => {
-        // Fetch profile data
-        fetch('/api/profile')
-            .then(res => res.json())
-            .then(data => setProfile(data))
-            .catch(err => console.error('Error fetching profile:', err));
-    }, []);
+  useEffect(() => {
+    fetchProfile();
+  }, []);
+
+  const fetchProfile = async () => {
+    try {
+      const apiUrl = `${process.env.REACT_APP_API_URL || 'http://localhost:5000'}/api/profile`;
+      const response = await axios.get(apiUrl);
+      setProfile(response.data);
+    } catch (error) {
+      console.error('Error fetching profile:', error);
+    }
+  };
+
+  const handleDownloadCV = () => {
+    const downloadUrl = `${process.env.REACT_APP_API_URL || 'http://localhost:5000'}/api/profile/download-cv`;
+    window.open(downloadUrl, '_blank');
+    };
 
     const containerVariants = {
         hidden: { opacity: 0 },
@@ -57,7 +70,7 @@ const Hero = () => {
                     
                     <motion.div variants={itemVariants} className="hero-buttons">
                         <button className="btn btn-primary">View My Work</button>
-                        <button className="btn btn-outline">Download CV</button>
+                        <button className="btn secondary" onClick={handleDownloadCV}>Download CV</button>
                     </motion.div>
                 </motion.div>
                 

@@ -9,7 +9,6 @@ const Pages = () => {
     return(
         <Routes>
             <Route path="/" element = {<Product/>}/>
-            <Route path="/products" element={<Product />} />
             <Route path="/login" element = {<Login/>}/>
             <Route path="/register" element = {<Register/>}/>
             <Route path="/cart" element = {<Cart/>}/>
