@@ -10,6 +10,7 @@ const ProductAPI = () => {
   const getProducts = async () => {
     try {
       setLoading(true);
+      console.log("Base URL:", axiosClient.defaults.baseURL);
       const res = await axiosClient.get('/api/product');
 console.log('API Response:', res.data);
       
