@@ -9,10 +9,7 @@ const cors = require('cors');
 require('dotenv').config();
 const app = express() ; 
 app.use(cookieParser());
-app.use(cors({
-  origin: 'https://ecommercebynateria.vercel.app', // your frontend URL
-  credentials: true
-}));
+app.use(cors());
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
