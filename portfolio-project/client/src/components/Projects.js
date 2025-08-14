@@ -18,7 +18,11 @@ const Projects = () => {
 
     const fetchProjects = async () => {
         try {
-            const apiUrl = `${process.env.REACT_APP_API_URL}/api/projects`;
+            // **ROBUST FIX**: Use the live URL as a fallback.
+            // This prevents the build from crashing if the environment variable is not set.
+            const API_BASE_URL = process.env.REACT_APP_API_URL || 'https://your-portfolio-api.onrender.com';
+            const apiUrl = `${API_BASE_URL}/api/projects`;
+            
             const response = await axios.get(apiUrl);
             setProjects(response.data);
         } catch (error) {

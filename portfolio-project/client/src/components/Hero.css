@@ -4,7 +4,8 @@
     align-items: center;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
-    padding: 0 20px;
+    padding: 80px 20px 20px;
+    overflow-x: hidden;
 }
 
 .hero-container {
@@ -25,20 +26,21 @@
 }
 
 .hero-title {
-    font-size: 3.5rem;
+    font-size: clamp(2rem, 5vw, 3.5rem); /* Responsive font size */
     font-weight: 700;
     margin-bottom: 20px;
     line-height: 1.2;
+    word-wrap: break-word;
 }
 
 .hero-subtitle {
-    font-size: 1.5rem;
+    font-size: clamp(1.1rem, 3vw, 1.5rem);
     margin-bottom: 20px;
     color: rgba(255, 255, 255, 0.9);
 }
 
 .hero-description {
-    font-size: 1.1rem;
+    font-size: clamp(0.95rem, 2.5vw, 1.1rem);
     line-height: 1.6;
     margin-bottom: 30px;
     color: rgba(255, 255, 255, 0.8);
@@ -46,7 +48,7 @@
 
 .hero-buttons {
     display: flex;
-    gap: 20px;
+    gap: 15px;
     flex-wrap: wrap;
 }
 
@@ -58,8 +60,8 @@
 }
 
 .hero-image img {
-    width: 350px;
-    height: 350px;
+    width: clamp(200px, 40vw, 350px);
+    height: clamp(200px, 40vw, 350px);
     border-radius: 50%;
     object-fit: cover;
     border: 5px solid rgba(255, 255, 255, 0.2);
@@ -68,61 +70,30 @@
 
 /* Button Styles */
 .btn {
-    padding: 12px 30px;
-    border: rgb(212, 151, 151);
+    padding: 12px 25px;
+    border: none;
     border-radius: 25px;
-    font-size: 1rem;
+    font-size: clamp(0.9rem, 2vw, 1rem);
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
     text-decoration: none;
-    display: inline-flex;;
-}
-
-.btn.secondary {
-  background-color: transparent;
-  color: white;
-  border: 2px solid rgba(255, 255, 255, 0.2);
-}
-
-.btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
-}
-
-.btn:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-  transform: none;
-}
-
-.btn.secondary:hover {
-  background-color: rgba(255, 255, 255, 0.2);
-  color: white;
-}
-
-.download-spinner {
-  animation: spin 1s linear infinite;
-}
-
-.download-icon {
-  font-size: 18px;
-}
-
-@keyframes spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 140px;
 }
 
 .btn-primary {
     background: #6081a4;
     color: rgb(214, 198, 198);
-    border: 2px solid rgba(214, 198, 198, 0.5); /* Add border */
+    border: 2px solid rgba(214, 198, 198, 0.5);
 }
 
 .btn-primary:hover {
     background: rgba(255, 255, 255, 0.1);
     border-color: rgba(214, 198, 198, 0.8);
+    transform: translateY(-2px);
 }
 
 .btn-outline {
@@ -134,56 +105,59 @@
 .btn-outline:hover {
     background: rgba(255, 255, 255, 0.1);
     border-color: rgba(255, 255, 255, 0.8);
+    transform: translateY(-2px);
 }
-
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    .hero {
+        padding: 80px 15px 20px;
+        min-height: 100vh;
+    }
+
     .hero-container {
         flex-direction: column-reverse;
         text-align: center;
         gap: 30px;
     }
-    
+
     .hero-content {
         padding-right: 0;
         text-align: center;
+        max-width: 100%;
     }
-    
+
     .hero-image {
         flex: none;
     }
-    
-    .hero-image img {
-        width: 250px;
-        height: 250px;
-    }
-    
-    .hero-title {
-        font-size: 2.5rem;
-    }
-    
+
     .hero-buttons {
         justify-content: center;
+        gap: 10px;
     }
+
     .btn {
-    width: 100%;
-    max-width: 300px;
-    justify-content: center;
-  }
+        flex: 1;
+        min-width: 120px;
+        max-width: 200px;
+        padding: 10px 20px;
+    }
 }
 
 @media (max-width: 480px) {
-    .hero-title {
-        font-size: 2rem;
+    .hero {
+        padding: 70px 10px 20px;
     }
-    
-    .hero-subtitle {
-        font-size: 1.2rem;
+
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
     }
-    
-    .hero-image img {
-        width: 200px;
-        height: 200px;
+
+    .btn {
+        width: 100%;
+        max-width: 280px;
+        padding: 12px 20px;
     }
 }
