@@ -13,8 +13,8 @@ const UserAPI = (token) => {
             const getUser = async () => {
                 try {
                     const res = await axiosClient.get('/user/infor', {
-  headers: { Authorization: `Bearer ${token}` }
-});
+                      headers: { Authorization: `Bearer ${token}` }
+                    });
 
                     setIsLogged(true);
                     res.data.role === 1 ? setIsAdmin(true) : setIsAdmin(false);
