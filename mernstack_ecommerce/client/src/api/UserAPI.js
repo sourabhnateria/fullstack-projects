@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
+import axiosClient from './axiosClient';
 // import Product from '../components/mainpages/products/Product'
 
 const UserAPI = (token) => {
@@ -11,9 +12,9 @@ const UserAPI = (token) => {
         if (token) {
             const getUser = async () => {
                 try {
-                    const res = await axios.get('/user/infor', {
-                        headers: { Authorization:`Bearer ${token}` }
-                    });
+                    const res = await axiosClient.get('/user/infor', {
+  headers: { Authorization: `Bearer ${token}` }
+});
 
                     setIsLogged(true);
                     res.data.role === 1 ? setIsAdmin(true) : setIsAdmin(false);
