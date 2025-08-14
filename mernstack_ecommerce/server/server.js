@@ -10,7 +10,7 @@ require('dotenv').config();
 const app = express() ; 
 app.use(cookieParser());
 app.use(cors({
-  origin: 'https://fullstack-projects-e6ls-pra4eacnf-sourabh-naterias-projects.vercel.app', // your frontend URL
+  origin: 'https://ecommercebynateria.vercel.app/', // your frontend URL
   credentials: true
 }));
 
