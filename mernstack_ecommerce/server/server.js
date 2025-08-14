@@ -12,6 +12,10 @@ app.use(cors({
 require('dotenv').config();
 const app = express() ; 
 app.use(cookieParser());
+app.use(cors({
+  origin: 'https://fullstack-projects-e6ls-pra4eacnf-sourabh-naterias-projects.vercel.app', // your frontend URL
+  credentials: true
+}));
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
