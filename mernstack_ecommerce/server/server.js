@@ -4,10 +4,7 @@ const mongoose = require('mongoose');
 const cookieParser= require ('cookie-parser');
 const cors = require('cors');
 
-app.use(cors({
-  origin: 'https://fullstack-projects-e6ls-pra4eacnf-sourabh-naterias-projects.vercel.app', // your frontend URL
-  credentials: true
-}));
+
 
 require('dotenv').config();
 const app = express() ; 
