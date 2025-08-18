@@ -11,7 +11,10 @@ const Skills = () => {
             { name: 'React', proficiency: 85, category: 'frontend' },
             { name: 'Node.js', proficiency: 80, category: 'backend' },
             { name: 'MongoDB', proficiency: 75, category: 'database' },
-            { name: 'Express.js', proficiency: 82, category: 'backend' }
+            { name: 'Express.js', proficiency: 82, category: 'backend' },
+            { name: 'Postman', proficiency: 60, category: 'backend' },
+            { name: 'Rust', proficiency: 50, category: 'backend' },
+            { name: 'C++', proficiency: 50, category: 'backend' },
         ];
         setSkills(staticSkills);
     }, []);
