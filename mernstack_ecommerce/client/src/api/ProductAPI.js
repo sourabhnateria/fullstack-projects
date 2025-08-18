@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import axiosClient from './axiosClient';
 
 const ProductAPI = () => {
   const [products, setProducts] = useState([]);
@@ -9,8 +10,9 @@ const ProductAPI = () => {
   const getProducts = async () => {
     try {
       setLoading(true);
-      const res = await axios.get('/api/product');
-      console.log('API Response:', res.data);
+      console.log("Base URL:", axiosClient.defaults.baseURL);
+      const res = await axiosClient.get('/api/product');
+console.log('API Response:', res.data);
       
       if (res.data && res.data.products) {
         setProducts(res.data.products);
