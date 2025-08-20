@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import axios from 'axios';
 import './Contact.css';
 
 const Contact = () => {
@@ -24,27 +25,50 @@ const Contact = () => {
         setIsSubmitting(true);
         setSubmitStatus('');
 
-        try {
-            const response = await fetch('/api/contact', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(formData)
-            });
-
-            if (response.ok) {
-                setSubmitStatus('success');
-                setFormData({ name: '', email: '', subject: '', message: '' });
-            } else {
-                setSubmitStatus('error');
-            }
-        } catch (error) {
-            console.error('Error submitting form:', error);
+        // Basic validation
+        if (!formData.name || !formData.email || !formData.message) {
             setSubmitStatus('error');
+            setIsSubmitting(false);
+            return;
         }
 
-        setIsSubmitting(false);
+        try {
+            console.log('Submitting form data:', formData);
+            
+            const API_BASE_URL = process.env.REACT_APP_API_URL || 'https://your-portfolio-api.onrender.com';
+            const response = await axios.post(`${API_BASE_URL}/api/contact`, formData, {
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                timeout: 15000, // 15 seconds timeout
+            });
+
+            console.log('Full response:', response);
+            console.log('Response data:', response.data);
+
+            // ✅ Check for success property
+            if (response.status === 200 && response.data.success === true) {
+                setSubmitStatus('success');
+                setFormData({
+                    name: '',
+                    email: '',
+                    subject: '',
+                    message: ''
+                });
+                console.log('✅ Message sent successfully!');
+            } else {
+                console.error('❌ Server responded but success is false:', response.data);
+                setSubmitStatus('error');
+            }
+
+        } catch (error) {
+            console.error('❌ Form submission error:', error);
+            console.error('Error response:', error.response?.data);
+            console.error('Error status:', error.response?.status);
+            setSubmitStatus('error');
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     return (
