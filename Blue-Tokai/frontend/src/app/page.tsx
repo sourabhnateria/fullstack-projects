@@ -15,8 +15,7 @@ import BannerCarousel from "../components/home/BannerCarousel";
 import CategoryTiles from "../components/home/CategoryTiles";
 import QuickLinks from "../components/home/QuickLinks";
 import BestsellerCarousel from "../components/shop/BestsellerCarousel";
-const API_URL =
-  process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/api/v1";
+const API_URL = process.env.NEXT_API_URL || "http://localhost:5000/api/v1";
 const BACKEND_URL = new URL(API_URL).origin;
 export default async function HomePage() {
   const [products, categories] = await Promise.all([

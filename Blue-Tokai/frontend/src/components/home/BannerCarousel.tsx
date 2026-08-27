@@ -5,12 +5,11 @@ import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
 
 // Base URL where the backend serves static files from backend/public.
-// NEXT_PUBLIC_API_URL is "http://localhost:5000/api/v1" (for API calls),
+// NEXT_API_URL is "http://localhost:5000/api/v1" (for API calls),
 // but static files like images are served from the root, not under
 // /api/v1, so we strip the path and keep just the origin
 // (http://localhost:5000).
-const API_URL =
-  process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/api/v1";
+const API_URL = process.env.NEXT_API_URL || "http://localhost:5000/api/v1";
 const BACKEND_URL = new URL(API_URL).origin;
 
 // Banner ads live in backend/public/images/homepage/<filename>.
