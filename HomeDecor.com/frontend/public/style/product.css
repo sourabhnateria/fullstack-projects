@@ -1,0 +1,296 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font);
+}
+
+#parent_div {
+  display: flex;
+}
+
+#left_div {
+  height: 100%;
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background-color: var(--brand);
+  position: fixed;
+  z-index: 1;
+  box-shadow: var(--shadow-lg);
+}
+
+#left_div_1 {
+  background-color: var(--brand);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-left: 23px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+
+#left_div_2 {
+  display: flex;
+  background-color: var(--brand);
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  height: 100%;
+  gap: 6px;
+}
+
+#left_div_2 button {
+  border: none;
+  outline: none;
+  font-weight: 600;
+  padding: 10px 65px;
+  background-color: rgba(255, 255, 255, 0.08);
+  color: white;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background-color var(--ease), color var(--ease), transform var(--ease);
+}
+
+#left_div_2 button:hover {
+  background-color: white;
+  color: var(--brand);
+  transform: translateX(4px);
+}
+
+#left_div_2 div {
+  width: 100%;
+  margin: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+#right_div {
+  border: none;
+  height: auto;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  margin-left: 200px;
+  background-color: var(--surface-alt);
+  min-height: 100vh;
+}
+
+#right_div_1 {
+  border-bottom: 1px solid var(--border);
+  padding: 10px 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background: white;
+}
+#right_div_1>div:first-child {
+  background-color: var(--surface-alt);
+  width: 70%;
+  padding: 8px 14px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 50px;
+  gap: 10px;
+}
+#right_div_1>div:first-child>input {
+  width: 60%;
+  border: none;
+  background: transparent;
+  outline: none;
+}
+
+#right_div_2 {
+  padding-left: 40px;
+  padding-top: 40px;
+  padding-right: 40px;
+}
+
+#showAdd {
+  border: 1px solid var(--border);
+  background: white;
+  border-radius: var(--radius-lg);
+  height: auto;
+  align-content: center;
+  box-shadow: var(--shadow-sm);
+}
+#showAdd >#register>input {
+  font-size: small;
+  background-color: white;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 10px;
+  text-align: center;
+  margin: 5px;
+  outline: none;
+  transition: border-color var(--ease), box-shadow var(--ease);
+}
+#showAdd >#register>input:focus {
+  border-color: var(--brand);
+  box-shadow: 0 0 0 3px var(--brand-light);
+}
+#showAdd >#register>input:last-child {
+  background-color: var(--brand);
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+}
+#showAdd >#register>input:last-child:hover {
+  background-color: var(--brand-dark);
+  color: white;
+  font-weight: 700;
+}
+
+#showAdd>#register {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 30px 50px;
+}
+
+#showAll {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto;
+  gap: 18px;
+}
+#showAll>div {
+  border: 1px solid var(--border);
+  background: white;
+  border-radius: var(--radius-lg);
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow var(--ease), transform var(--ease);
+}
+#showAll>div:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-4px);
+}
+#showAll div img {
+  width: 100%;
+  border-radius: var(--radius-md);
+  border: none;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+#showAll>div>div {
+  padding: 4px 2px;
+}
+#showAll>div>div:nth-child(3) {
+  display: flex;
+  flex-direction: row;
+}
+
+#showAll>div>div:nth-child(3)>h5:first-child {
+  color: var(--accent);
+}
+
+#showAll>div>div:last-child {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  gap: 8px;
+  padding-top: 8px;
+}
+#showAll>div>div:last-child>button {
+  border: 1px solid var(--border);
+  background: white;
+  border-radius: var(--radius-sm);
+  padding: 8px 10px;
+  cursor: pointer;
+  transition: background-color var(--ease), color var(--ease), transform var(--ease);
+}
+#showAll>div>div:last-child>button:hover {
+  background-color: var(--brand);
+  color: white;
+  border-color: var(--brand);
+  transform: translateY(-2px);
+}
+
+#showUser>div {
+  border: 1px solid var(--border);
+  background: white;
+  border-radius: var(--radius-md);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  padding: 10px 16px;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow var(--ease);
+}
+#showUser>div:hover {
+  box-shadow: var(--shadow-md);
+}
+
+#showUser>div>div>button {
+  transition: all 0.3s;
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: white;
+  cursor: pointer;
+}
+
+#showUser>div>div>button:hover {
+  background-color: var(--brand);
+  color: white;
+  border-color: var(--brand);
+}
+#showUser>div {
+  align-items: center;
+}
+
+
+#updatePdt {
+  border: 1px solid var(--border);
+  background: white;
+  border-radius: var(--radius-lg);
+  height: auto;
+  align-content: center;
+  box-shadow: var(--shadow-sm);
+}
+#updatePdt >#register1>input {
+  font-size: small;
+  background-color: white;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 10px;
+  text-align: center;
+  margin: 5px;
+  outline: none;
+  transition: border-color var(--ease), box-shadow var(--ease);
+}
+#updatePdt >#register1>input:focus {
+  border-color: var(--brand);
+  box-shadow: 0 0 0 3px var(--brand-light);
+}
+#updatePdt >#register1>input:last-child {
+  background-color: var(--brand);
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+}
+#updatePdt >#register1>input:last-child:hover {
+  background-color: var(--brand-dark);
+  color: white;
+  font-weight: 700;
+}
+
+#updatePdt>#register1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 30px 50px;
+}

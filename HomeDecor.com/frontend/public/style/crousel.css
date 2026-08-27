@@ -1,0 +1,88 @@
+.crousel {
+  width: 90%;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+.crousel i {
+  border: 1px solid var(--border);
+  background: white;
+  padding: 12px;
+  border-radius: 50%;
+  font-size: xx-large;
+  cursor: pointer;
+  transition: box-shadow var(--ease), transform var(--ease), color var(--ease);
+  color: var(--brand);
+}
+.crousel i:hover {
+  box-shadow: var(--shadow-md);
+  transform: scale(1.08);
+  color: var(--brand-dark);
+}
+.crousel_div1,
+.crousel_div2,
+.crousel_div3 {
+  width: 99%;
+  height: auto;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding-bottom: 4px;
+}
+
+.crousel_div1 div,
+.crousel_div2 div,
+.crousel_div3 div {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 8px;
+  flex: 0 0 180px;
+  width: 180px;
+  background: white;
+  transition: box-shadow var(--ease), transform var(--ease);
+}
+.crousel_div1 div:hover,
+.crousel_div2 div:hover,
+.crousel_div3 div:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-4px);
+}
+.crousel_div1 div img,
+.crousel_div2 div img,
+.crousel_div3 div img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+}
+
+.crousel_div1 div h5,
+.crousel_div1 div h6,
+.crousel_div1 div p,
+.crousel_div2 div h5,
+.crousel_div2 div h6,
+.crousel_div2 div p,
+.crousel_div3 div h5,
+.crousel_div3 div h6,
+.crousel_div3 div p {
+  padding-left: 10px;
+  margin-top: 5px;
+}
+
+.crousel_div1 div i,
+.crousel_div2 div i,
+.crousel_div3 div i {
+  font-size: x-small;
+  outline: none;
+  border: none;
+  padding-left: 0;
+  letter-spacing: 2px;
+  background: none;
+  color: rgb(230, 165, 0);
+  border-radius: 0;
+}

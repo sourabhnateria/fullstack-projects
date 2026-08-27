@@ -1,0 +1,85 @@
+* {
+  font-family: var(--font);
+}
+body {
+  background-color: var(--surface-alt);
+}
+#container {
+  width: 50%;
+  height: auto;
+  margin: 40px auto;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+}
+#container div {
+  background-color: white;
+}
+#container div div,
+#container div div input,
+#container div div h2,
+p,
+label {
+  background-color: white;
+}
+#radio {
+  padding: 24px 50px 32px;
+  color: var(--muted);
+}
+#inputs div {
+  border: none;
+  display: flex;
+  flex-direction: column;
+  padding: 40px;
+  padding-top: 5px;
+  gap: 6px;
+}
+#inputs h2 {
+  color: var(--brand);
+  margin-bottom: 12px;
+}
+input {
+  padding: 14px 16px;
+  margin: 5px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  outline: none;
+  transition: border-color var(--ease), box-shadow var(--ease);
+  font-size: 14px;
+}
+input:focus {
+  border-color: var(--brand);
+  box-shadow: 0 0 0 3px var(--brand-light);
+}
+#btn,#register {
+  padding: 15px;
+  color: white;
+  background-color: var(--brand);
+  font-weight: 700;
+  letter-spacing: 2px;
+  outline: none;
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background-color var(--ease), transform var(--ease), box-shadow var(--ease);
+  box-shadow: var(--shadow-sm);
+}
+#btn:hover,#register:hover {
+  background-color: var(--brand-dark);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+#register {
+  background-color: white;
+  color: var(--brand);
+  border: 1px solid var(--brand);
+  box-shadow: none;
+}
+#register:hover {
+  background-color: var(--brand-light);
+  color: var(--brand-dark);
+  box-shadow: none;
+}
