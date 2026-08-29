@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+Sitemap: https://yoursite.vercel.app/sitemap.xml
+
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 0
